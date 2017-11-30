@@ -76,8 +76,6 @@ extern "C" {
 #endif
     
     static Haptic *hapticController = nil;
-    static bool hasPreparedImpact = false;
-    static bool hasPreparedNotification = false;
     
     void Initialize() {
         if(hapticController == nil) {
@@ -89,41 +87,23 @@ extern "C" {
     
     ///Mark - Prepare Methods
     
-    void prepareImpact() {
-        [hapticController PrepareImpact];
-        //mark this as true so we can check later to see if we need to prepare
-        hasPreparedImpact = true;
-    }
-    
-    void prepareNotification() {
-        [hapticController PrepareNotification];
-        //mark this as true so we can check later to see if we need to prepare
-        hasPreparedNotification = true;
-    }
-    
     //Mark - notification methods
     
     void hapticSuccess() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareNotification];
-        }
+        [hapticController PrepareNotification];
         [hapticController HapticSuccess];
     }
     
     void hapticWarning() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareNotification];
-        }
+        [hapticController PrepareNotification];
         [hapticController HapticWarning];
     }
     
     void hapticError() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareNotification];
-        }
+        [hapticController PrepareNotification];
         [hapticController HapticError];
     }
     
@@ -131,25 +111,19 @@ extern "C" {
     
     void impactLight() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareImpact];
-        }
+        [hapticController PrepareImpact];
         [hapticController ImpactLight];
     }
     
     void impactMedium() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareImpact];
-        }
+        [hapticController PrepareImpact];
         [hapticController ImpactMedium];
     }
     
     void impactHeavy() {
         //we need to prepare since the dev didn't
-        if(hasPreparedImpact == false) {
-            [hapticController PrepareImpact];
-        }
+        [hapticController PrepareImpact];
         [hapticController ImpactHeavy];
     }
     
